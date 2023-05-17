@@ -199,13 +199,146 @@
     <script src="<?= base_url()?>assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script src="<?= base_url()?>assets/js/plugins-init/datatables.init.js"></script>
     <script src="<?= base_url()?>assets/vendor/chart.js/Chart.bundle.min.js"></script>
-    <script src="<?= base_url()?>assets/vendor/peity/jquery.peity.min.js"></script>
-    <script src="<?= base_url()?>assets/vendor/apexchart/apexchart.js"></script>
     <script src="<?= base_url(); ?>assets/vendor/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="<?= base_url()?>assets/js/dashboard/dashboard-1.js"></script>
     <script src="<?= base_url()?>assets/vendor/owl-carousel/owl.carousel.js"></script>
     <script src="<?= base_url()?>assets/js/custom.js"></script>
     <script src="<?= base_url()?>assets/js/deznav-init.js"></script>
+    <?php if($title == "Dashboard"):?>
+    <script>
+    (function($) {
+        "use strict"
+
+        var dzSparkBar = function() {
+            let draw = Chart.controllers.bar.__super__.draw;
+
+            var screenWidth = $(window).width();
+            var barChart1 = function() {
+
+                if (jQuery('#barChart_1').length > 0) {
+
+                    const barChart_1 = document.getElementById("barChart_1").getContext('2d');
+
+                    Chart.controllers.bar = Chart.controllers.bar.extend({
+                        draw: function() {
+                            draw.apply(this, arguments);
+                            let nk = this.chart.chart.ctx;
+                            let _fill = nk.fill;
+                            nk.fill = function() {
+                                nk.save();
+                                nk.shadowColor = 'rgba(0, 120, 215, 0.5)';
+                                nk.shadowBlur = 10;
+                                nk.shadowOffsetX = 0;
+                                nk.shadowOffsetY = 10;
+                                _fill.apply(this, arguments)
+                                nk.restore();
+                            }
+                        }
+                    });
+
+                    barChart_1.height = 100;
+
+                    new Chart(barChart_1, {
+                        type: 'bar',
+                        data: {
+                            defaultFontFamily: 'Poppins',
+                            labels: [
+                                <?php
+                                for ($i = 6; $i >= 0; $i--) {
+                                    $date = new DateTime();
+                                    $date->modify("-$i day");
+                                    $formattedDate = $date->format('d M Y');
+                                    echo '"' . $formattedDate . '",';
+                                }
+                                ?>
+                            ],
+
+                            datasets: [{
+                                    label: "Number of Users",
+                                    data: [
+                                        <?php
+                                        for ($i = 6; $i >= 0; $i--) {
+                                            $date = new DateTime();
+                                            $date->modify("-$i day");
+                                            $where = $date->format('Y-m-d');
+                                            $count = $dbtrx->where('is_active', 2)->orWhere('is_active', 4)->where('created_at >=', $where . ' 00:00:00')->where('created_at <=', $where . ' 23:59:59')->countAllResults();
+                                            echo $count . ',';
+                                        }
+                                        ?>
+                                    ],
+                                    backgroundColor: 'rgba(0, 120, 215, 0.9)',
+                                    borderWidth: "2",
+                                    borderColor: 'transparent'
+                                },
+                                {
+                                    label: "Investment",
+                                    data: [
+                                        <?php
+                                        for ($i = 6; $i >= 0; $i--) {
+                                            $date = new DateTime();
+                                            $date->modify("-$i day");
+                                            $where = $date->format('Y-m-d');
+                                            $sum = $dbtrx->selectSum('amount')->where('is_active', 2)->orWhere('is_active', 4)->where('created_at >=', $where . ' 00:00:00')->where('created_at <=', $where . ' 23:59:59')->get()->getRow()->amount;
+                                            echo $sum . ',';
+                                        }
+                                        ?>
+                                    ],
+                                    backgroundColor: 'rgba(142, 219, 95, 0.9)',
+                                    borderWidth: "2",
+                                    borderColor: 'transparent'
+                                }
+                            ]
+
+                        },
+                        options: {
+                            legend: false,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true,
+                                        max: 500,
+                                        min: 0,
+                                        stepSize: 50,
+                                        padding: 10
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        padding: 5
+                                    }
+                                }]
+                            }
+                        }
+                    });
+
+                }
+            }
+            return {
+                init: function() {},
+
+                load: function() {
+                    barChart1();
+                },
+
+                resize: function() {}
+            }
+
+        }();
+
+        jQuery(window).on('load', function() {
+            dzSparkBar.load();
+        });
+
+        jQuery(window).on('resize', function() {
+            setTimeout(function() {
+                dzSparkBar.resize();
+            }, 1000);
+        });
+
+    })(jQuery);
+    </script>
+
+    <?php endif;?>
     <script>
     <?php if(session()->getFlashdata('success')): ?>
     swal("Success", "<?= session()->getFlashdata('success');?>", "success");
