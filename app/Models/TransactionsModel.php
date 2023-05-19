@@ -13,7 +13,7 @@ class TransactionsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_id', 'plan_id', 'method_id', 'no_transaction', 'amount', 'persentace', 'profit', 'is_active','date'];
+    protected $allowedFields    = ['user_id', 'plan_id', 'no_transaction', 'amount', 'persentace', 'profit', 'is_active','date'];
 
     // Dates
     protected $useTimestamps = true;
@@ -41,22 +41,18 @@ class TransactionsModel extends Model
 
     public function getAll()
     {
-        return $this->select('transactions.*, deposits.*, transactions.id as id_trx, deposits.id as id_dp, methods.name as method, plans.name as plan, plans.period_month as month, plans.period_day as day, users.name as user, users.username, users.email, transactions.is_active as active')
-            ->join('methods', 'transactions.method_id = methods.id')
+        return $this->select('transactions.*, transactions.id as id_trx, plans.name as plan, plans.period_month as month, plans.period_day as day, plans.return, users.name as user, users.username, users.email, transactions.is_active as active')
             ->join('plans', 'transactions.plan_id = plans.id')
             ->join('users', 'transactions.user_id = users.id')
-            ->join('deposits', 'transactions.no_transaction =deposits.no_transaction')
             ->orderBy('transactions.id', 'DESC')
             ->findAll();
     }
 
     public function getTrx($id)
     {
-        return $this->select('transactions.*, deposits.*, transactions.id as id_trx, deposits.id as id_dp, methods.name as method, plans.name as plan, plans.period_month as month, plans.period_day as day, users.name as user, users.username, users.email, transactions.is_active as active')
-        ->join('methods', 'transactions.method_id = methods.id')
+        return $this->select('transactions.*, transactions.id as id_trx, plans.name as plan, plans.period_month as month, plans.period_day as day, plans.return, users.name as user, users.username, users.email, transactions.is_active as active')
         ->join('plans', 'transactions.plan_id = plans.id')
         ->join('users', 'transactions.user_id = users.id')
-        ->join('deposits', 'transactions.no_transaction =deposits.no_transaction')
         ->where('transactions.user_id', $id)
         ->orderBy('transactions.id', 'DESC')
         ->findAll();
@@ -64,11 +60,9 @@ class TransactionsModel extends Model
 
     public function getTrxById($id)
     {
-        return $this->select('transactions.*, deposits.*, transactions.id as id_trx, deposits.id as id_dp, methods.name as method, plans.name as plan, plans.period_month as month, plans.period_day as day, users.name as user, users.username, users.email, transactions.is_active as active')
-        ->join('methods', 'transactions.method_id = methods.id')
+        return $this->select('transactions.*, transactions.id as id_trx, plans.name as plan, plans.period_month as month, plans.period_day as day, plans.return, users.name as user, users.username, users.email, transactions.is_active as active')
         ->join('plans', 'transactions.plan_id = plans.id')
         ->join('users', 'transactions.user_id = users.id')
-        ->join('deposits', 'transactions.no_transaction =deposits.no_transaction')
         ->where('transactions.id', $id)
         ->first();
     }

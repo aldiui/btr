@@ -13,7 +13,7 @@ class UsersModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name','username','email','password','salt','gender','date_of_birth','place_of_birth','role','image','address','main_wallet','is_active','is_plan','country_id'];
+    protected $allowedFields    = ['name','username','email','password','salt','gender','date_of_birth','place_of_birth','role','image','address','main_wallet','is_active','is_plan','country_id','dividen_wallet'];
 
     // Dates
     protected $useTimestamps = true;
@@ -51,11 +51,10 @@ class UsersModel extends Model
 
     public function getWhiteList()
     {
-        return $this->select('users.*, COUNT(DISTINCT wallets.id) as total_wallets')
-            ->join('wallets', 'wallets.user_id = users.id', 'left')
-            ->groupBy('users.id')
-            ->having('total_wallets >=', 1)
-            ->orderBy('users.id', 'DESC')
+        return $this->select('users.*, wallets.wallet_address as wallet_account')
+            ->join('wallets', 'wallets.user_id = users.id')
+            ->join('whitelists', 'whitelists.wallet_address = wallets.wallet_address')
+            ->orderBy('whitelists.id', 'DESC')
             ->findAll();
     }
 }

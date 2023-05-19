@@ -31,10 +31,18 @@
                         </div>
                         <div class="row align-items-center">
                             <div class="col-lg-5 mb-4">
+                                <label for="amount"><strong>Wallet User</strong></label>
+                            </div>
+                            <div class="col-lg-7 mb-4">
+                                : <?= $withdraw['wallet_user'];?>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-lg-5 mb-4">
                                 <label for="amount"><strong>Amount</strong></label>
                             </div>
                             <div class="col-lg-7 mb-4">
-                                : $ <?= $withdraw['amount'];?> USD
+                                : <?= $withdraw['amount'];?> BUSD
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -74,12 +82,30 @@
                                         <div class="input-group">
                                             <input type="number"
                                                 class="form-control <?= !empty($error['amount']) ? 'is-invalid' : ''; ?>"
-                                                name="amount" id="amount" value="<?= $withdraw['amount'];?>"
-                                                max="<?= $account['main_wallet'];?>">
+                                                name="amount" id="amount" value="<?= $withdraw['amount'];?>">
                                             <span class=" input-group-text">USD</span>
                                         </div>
                                         <small class="small text-danger">
                                             <?= !empty($error['amount']) ? validation_show_error('amount') : ''; ?>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="mb-1" for="wallet_user"><strong>Wallet User</strong></label>
+                                        <select
+                                            class="form-control  <?= !empty($error['wallet_user']) ? 'is-invalid' : ''; ?>"
+                                            name="wallet_user" id="wallet_user">
+                                            <option value="">-- Select Wallet User --</option>
+                                            <?php foreach($wallet_user as $row):?>
+                                            <option value="<?= $row;?>"
+                                                <?= ($withdraw["wallet_user"] == $row) ? "selected" : "";?>>
+                                                <?= $row;?>
+                                            </option>
+                                            <?php endforeach;?>
+                                        </select>
+                                        <small class="invalid-feedback">
+                                            <?= !empty($error['wallet_user']) ? validation_show_error('wallet_user') : ''; ?>
                                         </small>
                                     </div>
                                 </div>

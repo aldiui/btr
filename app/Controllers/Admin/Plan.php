@@ -26,14 +26,13 @@ class Plan extends BaseController
     public function save()
     {
         $validate = $this->validate([
-            'name' => 'required|min_length[3]',
-            'description' => 'required',
-            'period_month' => 'required',
-            'period_day' => 'required',
-            'min_amount' => 'required',
-            'max_amount' => 'required',
-            'estimation' => 'required',
-            'return' => 'required',
+            'name' => 'required|trim|min_length[3]',
+            'description' => 'required|trim',
+            'period_month' => 'required|trim',
+            'period_day' => 'required|trim',
+            'min_amount' => 'required|trim',
+            'max_amount' => 'required|trim',
+            'return' => 'required|trim',
             'image' => 'uploaded[image]|max_size[image,1024]|is_image[image]|mime_in[image,image/jpeg,image/png,image/jpg]',
         ]);
 
@@ -51,7 +50,6 @@ class Plan extends BaseController
             'period_day' =>  $this->request->getPost('period_day'),
             'min_amount' =>  $this->request->getPost('min_amount'),
             'max_amount' =>  $this->request->getPost('max_amount'),
-            'estimation' =>  $this->request->getPost('estimation'),
             'return' =>  $this->request->getPost('return'),
             'is_active' =>  $this->request->getPost('is_active'),
             'image' => $newImageName,
@@ -73,14 +71,13 @@ class Plan extends BaseController
     public function update($id)
     {
         $validate = $this->validate([
-            'name' => 'required|min_length[3]',
-            'description' => 'required',
-            'period_month' => 'required',
-            'period_day' => 'required',
-            'min_amount' => 'required',
-            'max_amount' => 'required',
-            'estimation' => 'required',
-            'return' => 'required',
+            'name' => 'required|trim|min_length[3]',
+            'description' => 'required|trim',
+            'period_month' => 'required|trim',
+            'period_day' => 'required|trim',
+            'min_amount' => 'required|trim',
+            'max_amount' => 'required|trim',
+            'return' => 'required|trim',
         ]);
 
         if (!$validate) {
@@ -118,7 +115,6 @@ class Plan extends BaseController
             'period_day' =>  $this->request->getPost('period_day'),
             'min_amount' =>  $this->request->getPost('min_amount'),
             'max_amount' =>  $this->request->getPost('max_amount'),
-            'estimation' =>  $this->request->getPost('estimation'),
             'return' =>  $this->request->getPost('return'),
             'is_active' =>  $this->request->getPost('is_active'),
             'image' => $newImageName,

@@ -45,27 +45,19 @@
                         </div>
                         <div class="row align-items-center">
                             <div class="col-lg-5 mb-4">
-                                <label for="amount"><strong>Method</strong></label>
-                            </div>
-                            <div class="col-lg-7 mb-4">
-                                : <?= $transaction['method'];?>
-                            </div>
-                        </div>
-                        <div class="row align-items-center">
-                            <div class="col-lg-5 mb-4">
                                 <label for="amount"><strong>Amount</strong></label>
                             </div>
                             <div class="col-lg-7 mb-4">
-                                : $ <?= $transaction['amount'];?> USD
+                                : <?= $transaction['amount'];?> BUSD
                             </div>
                         </div>
-                        <?php if($transaction['active'] == 4):?>
+                        <?php if($transaction['is_active'] == 4):?>
                         <div class="row align-items-center">
                             <div class="col-lg-5 mb-4">
-                                <label for="amount"><strong>Persentace</strong></label>
+                                <label for="amount"><strong>Fixed</strong></label>
                             </div>
                             <div class="col-lg-7 mb-4">
-                                : <?= $transaction['persentace'];?> %
+                                : <?= $transaction['persentace'];?> X
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -73,7 +65,7 @@
                                 <label for="amount"><strong>Profit</strong></label>
                             </div>
                             <div class="col-lg-7 mb-4">
-                                : $ <?= $transaction['profit'];?> USD
+                                : <?= $transaction['profit'];?> BUSD
                             </div>
                         </div>
                         <div class="row align-items-center">
@@ -81,7 +73,7 @@
                                 <label for="amount"><strong>Total</strong></label>
                             </div>
                             <div class="col-lg-7 mb-4">
-                                : $ <?=  $transaction['amount'] + $transaction['profit'];?> USD
+                                : <?=  $transaction['amount'] + $transaction['profit'];?> BUSD
                             </div>
                         </div>
                         <?php endif;?>
@@ -90,7 +82,7 @@
                                 <label for="amount"><strong>Time</strong></label>
                             </div>
                             <div class="col-lg-7 mb-4">
-                                : <?php if ($transaction['active'] == 4): ?>
+                                : <?php if ($transaction['is_active'] == 4): ?>
                                 <span class="badge light badge-info">
                                     Completed
                                 </span>
@@ -112,12 +104,12 @@
                             </div>
                             <div class="col-lg-7 mb-4">
                                 : <span
-                                    class="badge light <?= ($transaction['active'] == 1) ? "badge-success" : (($transaction['active'] == 2) ? "badge-danger" : (($transaction['active'] == 4) ? "badge-info" : "badge-warning")); ?>">
-                                    <?= ($transaction['active'] == 1) ? "Success" : (($transaction['active'] == 2) ? "Rejected" : (($transaction['active'] == 4) ? "Completed" : "Pending")); ?>
+                                    class="badge light <?= ($transaction['is_active'] == 1) ? "badge-success" : (($transaction['is_active'] == 2) ? "badge-danger" : (($transaction['is_active'] == 4) ? "badge-info" : "badge-warning")); ?>">
+                                    <?= ($transaction['is_active'] == 1) ? "Success" : (($transaction['is_active'] == 2) ? "Rejected" : (($transaction['is_active'] == 4) ? "Completed" : "Pending")); ?>
                                 </span>
                             </div>
                         </div>
-                        <?php if($transaction['active'] != 1 AND $transaction['active'] != 4):?>
+                        <?php if($transaction['is_active'] != 1 AND $transaction['is_active'] != 4):?>
                         <form action="" method="post" autocomplete="off">
                             <?= csrf_field();?>
                             <div class="row">
@@ -145,7 +137,7 @@
                                 </div>
                             </div>
                         </form>
-                        <?php elseif($transaction['active'] == 1):?>
+                        <?php elseif($transaction['is_active'] == 1):?>
                         <form action="<?= base_url();?>admin/transaction/profit/<?= $transaction['id_trx'];?>"
                             method="post" autocomplete="off">
                             <?= csrf_field();?>
@@ -157,19 +149,19 @@
                                             <input type="number"
                                                 class="form-control <?= !empty($error['amount']) ? 'is-invalid' : ''; ?>"
                                                 name="amount" id="amount" value="<?= $transaction['amount'];?>"
-                                                readonly><span class=" input-group-text">USD</span>
+                                                readonly><span class=" input-group-text">BUSD</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="persentace" class="mb-1"><strong>Persentace</strong></label>
+                                        <label for="persentace" class="mb-1"><strong>Fixed</strong></label>
                                         <div class="input-group">
                                             <input type="number"
                                                 class="form-control <?= !empty($error['persentace']) ? 'is-invalid' : ''; ?>"
-                                                name="persentace" id="persentace" max="100"
-                                                value="<?= old('persentace');?>"><span
-                                                class=" input-group-text">%</span>
+                                                name="persentace" id="persentace"
+                                                value="<?= $transaction['return'];?>"><span
+                                                class=" input-group-text">X</span>
                                         </div>
                                         <small class="small text-danger">
                                             <?= !empty($error['persentace']) ? validation_show_error('persentace') : ''; ?>
@@ -182,8 +174,9 @@
                                         <div class="input-group">
                                             <input type="number"
                                                 class="form-control <?= !empty($error['profit']) ? 'is-invalid' : ''; ?>"
-                                                name="profit" id="profit" value="<?= old('profit');?>" readonly><span
-                                                class=" input-group-text">USD</span>
+                                                name="profit" id="profit"
+                                                value="<?= $transaction['amount'] * $transaction['return'];?>"
+                                                readonly><span class=" input-group-text">BUSD</span>
                                         </div>
                                         <small class="small text-danger">
                                             <?= !empty($error['profit']) ? validation_show_error('profit') : ''; ?>
@@ -204,13 +197,8 @@
                                 document.getElementById('profit').value = '';
                                 return;
                             }
-                            if (percentage > 100) {
-                                document.getElementById('profit').value = '';
-                                alert('Percentage cannot exceed 100.');
-                                return;
-                            }
-                            const profit = amount * (percentage / 100);
-                            document.getElementById('profit').value = profit.toFixed(2);
+                            const profit = amount * percentage;
+                            document.getElementById('profit').value = profit;
                         }
                         document.getElementById('persentace').addEventListener('input', calculateProfit);
                         </script>

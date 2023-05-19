@@ -476,7 +476,8 @@
                                                 <?= $setting['name']?>. We would like to inform you that
                                                 your
                                                 recent withdrawal request has been successfully processed and the funds
-                                                will be transferred to your wallet soon.
+                                                will be transferred to your wallet soon by
+                                                <?= $withdraw['wallet_user'];?>.
                                             </p>
                                             <table class="purchase" width="100%" cellpadding="0" cellspacing="0">
                                                 <tr>
@@ -504,8 +505,8 @@
                                                                 <td width="80%" class="purchase_item"><span
                                                                         class="f-fallback">Withdraw</span></td>
                                                                 <td class="align-right" width="20%"
-                                                                    class="purchase_item"><span class="f-fallback"> $
-                                                                        <?= $withdraw['amount'];?> USD</span></td>
+                                                                    class="purchase_item"><span class="f-fallback">
+                                                                        <?= $withdraw['amount'];?> BUSD</span></td>
                                                             </tr>
                                                             <tr>
                                                                 <td width="80%" class="purchase_footer" valign="middle">
@@ -515,7 +516,7 @@
                                                                 </td>
                                                                 <td width="20%" class="purchase_footer" valign="middle">
                                                                     <p class="f-fallback purchase_total">
-                                                                        $ <?= $withdraw['amount'];?> USD</p>
+                                                                        <?= $withdraw['amount'];?> BUSD</p>
                                                                 </td>
                                                             </tr>
                                                         </table>

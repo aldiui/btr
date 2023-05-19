@@ -45,28 +45,12 @@ class Transaction extends BaseController
             $message1 = view('email/transaction', $data1);
             $this->Email->setMessage($message1);
             $this->Email->send();
-
-            $email2 = $this->Email;
-            $email2->setFrom($setemail['from_email'], $setemail['from_name']);
-            $email2->setTo($user['email']);
-            $email2->setSubject("Deposit Success");
-            $data2 = [
-                'deposit' => $this->DepositsModel->getTrxById($deposit['id']),
-                'user' => $user,
-                'setting' => $this->SettingsModel->find(1),
-            ];
-            $message2 = view('email/deposit', $data2);
-            $email2->setMessage($message2);
-            $email2->send();
         } else {
             $date = null;
         }
         $this->TransactionsModel->update($id, [
             'is_active' => $is_active,
             'date' => $date,
-        ]);
-        $this->DepositsModel->update($deposit['id'], [
-            'is_active' => $is_active
         ]);
         session()->setFlashdata('success', 'The transaction has been successfully updated.');
         return redirect()->to(base_url('/admin/transaction'));
@@ -75,8 +59,8 @@ class Transaction extends BaseController
     public function profit($id)
     {
         $validate = $this->validate([
-            'persentace' => 'required',
-            'profit' => 'required',
+            'persentace' => 'required|trim',
+            'profit' => 'required|trim',
         ]);
 
         if (!$validate) {
@@ -101,9 +85,9 @@ class Transaction extends BaseController
             'persentace' => $this->request->getPost('persentace'),
             'profit' => $this->request->getPost('profit'),
         ]);
-        $main_wallet = $user['main_wallet'] + $transaction['amount'] + $this->request->getPost('profit');
+        $dividen_wallet = $user['dividen_wallet'] + $transaction['amount'] + $this->request->getPost('profit');
         $this->UsersModel->update($user['id'], [
-            'main_wallet' => $main_wallet
+            'dividen_wallet' => $dividen_wallet
         ]);
         session()->setFlashdata('success', 'Profit has been successfully updated.');
         return redirect()->to(base_url('/admin/transaction'));

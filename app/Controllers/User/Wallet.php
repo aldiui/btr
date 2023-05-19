@@ -27,9 +27,9 @@ class Wallet extends BaseController
     public function save()
     {
         $validate = $this->validate([
-            'name' => 'required|min_length[3]',
-            'method' => 'required',
-            'wallet_address' => 'required',
+            'name' => 'required|trim|min_length[3]',
+            'method' => 'required|trim',
+            'wallet_address' => 'required|trim',
         ]);
 
         if (!$validate) {
@@ -60,9 +60,9 @@ class Wallet extends BaseController
     public function update($id)
     {
         $validate = $this->validate([
-            'name' => 'required|min_length[3]',
-            'method' => 'required',
-            'wallet_address' => 'required',
+            'name' => 'required|trim|min_length[3]',
+            'method' => 'required|trim',
+            'wallet_address' => 'required|trim',
         ]);
 
         if (!$validate) {

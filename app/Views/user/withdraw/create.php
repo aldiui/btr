@@ -20,12 +20,30 @@
                                         <div class="input-group">
                                             <input type="number"
                                                 class="form-control <?= !empty($error['amount']) ? 'is-invalid' : ''; ?>"
-                                                name="amount" id="amount" value="<?= old('amount');?>"
-                                                max="<?= $account['main_wallet'];?>">
+                                                name="amount" id="amount" value="<?= old('amount');?>">
                                             <span class=" input-group-text">USD</span>
                                         </div>
                                         <small class="small text-danger">
                                             <?= !empty($error['amount']) ? validation_show_error('amount') : ''; ?>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="mb-1" for="wallet_user"><strong>Wallet User</strong></label>
+                                        <select
+                                            class="form-control  <?= !empty($error['wallet_user']) ? 'is-invalid' : ''; ?>"
+                                            name="wallet_user" id="wallet_user">
+                                            <option value="">-- Select Wallet User --</option>
+                                            <?php foreach($wallet_user as $row):?>
+                                            <option value="<?= $row;?>"
+                                                <?= (old("wallet_user") == $row) ? "selected" : "";?>>
+                                                <?= $row;?>
+                                            </option>
+                                            <?php endforeach;?>
+                                        </select>
+                                        <small class="invalid-feedback">
+                                            <?= !empty($error['wallet_user']) ? validation_show_error('wallet_user') : ''; ?>
                                         </small>
                                     </div>
                                 </div>

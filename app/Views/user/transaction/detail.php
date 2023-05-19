@@ -38,27 +38,19 @@
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-lg-5 mb-4">
-                                    <label for="amount"><strong>Method</strong></label>
-                                </div>
-                                <div class="col-lg-7 mb-4">
-                                    : <?= $transaction['method'];?>
-                                </div>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-lg-5 mb-4">
                                     <label for="amount"><strong>Amount</strong></label>
                                 </div>
                                 <div class="col-lg-7 mb-4">
-                                    : $ <?= $transaction['amount'];?> USD
+                                    : <?= $transaction['amount'];?> BUSD
                                 </div>
                             </div>
-                            <?php if($transaction['active'] == 4):?>
+                            <?php if($transaction['is_active'] == 4):?>
                             <div class="row align-items-center">
                                 <div class="col-lg-5 mb-4">
-                                    <label for="amount"><strong>Persentace</strong></label>
+                                    <label for="amount"><strong>Fixed</strong></label>
                                 </div>
                                 <div class="col-lg-7 mb-4">
-                                    : <?= $transaction['persentace'];?> %
+                                    : <?= $transaction['persentace'];?> X
                                 </div>
                             </div>
                             <div class="row align-items-center">
@@ -66,7 +58,7 @@
                                     <label for="amount"><strong>Profit</strong></label>
                                 </div>
                                 <div class="col-lg-7 mb-4">
-                                    : $ <?= $transaction['profit'];?> USD
+                                    : <?= $transaction['profit'];?> BUSD
                                 </div>
                             </div>
                             <div class="row align-items-center">
@@ -74,7 +66,7 @@
                                     <label for="amount"><strong>Total</strong></label>
                                 </div>
                                 <div class="col-lg-7 mb-4">
-                                    : $ <?=  $transaction['amount'] + $transaction['profit'];?> USD
+                                    : <?=  $transaction['amount'] + $transaction['profit'];?> BUSD
                                 </div>
                             </div>
                             <?php endif;?>
@@ -83,7 +75,7 @@
                                     <label for="amount"><strong>Time</strong></label>
                                 </div>
                                 <div class="col-lg-7 mb-4">
-                                    : <?php if ($transaction['active'] == 4): ?>
+                                    : <?php if ($transaction['is_active'] == 4): ?>
                                     <span class="badge light badge-info">
                                         Completed
                                     </span>
@@ -105,8 +97,8 @@
                                 </div>
                                 <div class="col-lg-7 mb-4">
                                     : <span
-                                        class="badge light <?= ($transaction['active'] == 1) ? "badge-success" : (($transaction['active'] == 2) ? "badge-danger" : (($transaction['active'] == 4) ? "badge-info" : "badge-warning")); ?>">
-                                        <?= ($transaction['active'] == 1) ? "Success" : (($transaction['active'] == 2) ? "Rejected" : (($transaction['active'] == 4) ? "Completed" : "Pending")); ?>
+                                        class="badge light <?= ($transaction['is_active'] == 1) ? "badge-success" : (($transaction['is_active'] == 2) ? "badge-danger" : (($transaction['is_active'] == 4) ? "badge-info" : "badge-warning")); ?>">
+                                        <?= ($transaction['is_active'] == 1) ? "Success" : (($transaction['is_active'] == 2) ? "Rejected" : (($transaction['is_active'] == 4) ? "Completed" : "Pending")); ?>
                                     </span>
                                 </div>
                             </div>

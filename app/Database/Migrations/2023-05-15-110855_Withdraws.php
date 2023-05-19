@@ -26,6 +26,10 @@ class Withdraws extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'wallet_user' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'amount' => [
                 'type' => 'FLOAT',
                 'constraint' => '10,2',

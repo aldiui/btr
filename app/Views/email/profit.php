@@ -500,8 +500,8 @@
                                                                     </span>
                                                                 </td>
                                                                 <td class="align-right" width="20%"
-                                                                    class="purchase_item"><span class="f-fallback"> $
-                                                                        <?= $transaction['amount'];?> USD</span></td>
+                                                                    class="purchase_item"><span class="f-fallback">
+                                                                        <?= $transaction['amount'];?> BUSD</span></td>
                                                             </tr>
                                                             <tr>
                                                                 <td width="80%" class="purchase_item"><span
@@ -509,8 +509,8 @@
                                                                     </span>
                                                                 </td>
                                                                 <td class="align-right" width="20%"
-                                                                    class="purchase_item"><span class="f-fallback"> $
-                                                                        <?= $transaction['profit'];?> USD</span></td>
+                                                                    class="purchase_item"><span class="f-fallback">
+                                                                        <?= $transaction['profit'];?> BUSD</span></td>
                                                             </tr>
                                                             <tr>
                                                                 <td width="80%" class="purchase_footer" valign="middle">
@@ -520,9 +520,8 @@
                                                                 </td>
                                                                 <td width="20%" class="purchase_footer" valign="middle">
                                                                     <p class="f-fallback purchase_total">
-                                                                        $
                                                                         <?= $transaction['amount'] + $transaction['profit'];?>
-                                                                        USD</p>
+                                                                        BUSD</p>
                                                                 </td>
                                                             </tr>
                                                         </table>

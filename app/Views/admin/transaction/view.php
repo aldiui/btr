@@ -33,9 +33,9 @@
                                         <td><?= $row['no_transaction'] ?></td>
                                         <td><?= $row['username'] ?></td>
                                         <td><?= $row['plan'] ?></td>
-                                        <td>$ <?= $row['amount'] ?> USD</td>
+                                        <td><?= $row['amount'] ?> BUSD</td>
                                         <td>
-                                            <?php if ($row['active'] == 4): ?>
+                                            <?php if ($row['is_active'] == 4): ?>
                                             <span class="badge light badge-info">
                                                 Completed
                                             </span>
@@ -52,8 +52,8 @@
                                         </td>
                                         <td>
                                             <span
-                                                class="badge light <?= ($row['active'] == 1) ? "badge-success" : (($row['active'] == 2) ? "badge-danger" : (($row['active'] == 4) ? "badge-info" : "badge-warning")); ?>">
-                                                <?= ($row['active'] == 1) ? "Success" : (($row['active'] == 2) ? "Rejected" : (($row['active'] == 4) ? "Completed" : "Pending")); ?>
+                                                class="badge light <?= ($row['is_active'] == 1) ? "badge-success" : (($row['is_active'] == 2) ? "badge-danger" : (($row['is_active'] == 4) ? "badge-info" : "badge-warning")); ?>">
+                                                <?= ($row['is_active'] == 1) ? "Success" : (($row['is_active'] == 2) ? "Rejected" : (($row['is_active'] == 4) ? "Completed" : "Pending")); ?>
                                             </span>
                                         </td>
                                         <td width="15%">

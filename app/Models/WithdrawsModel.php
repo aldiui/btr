@@ -13,7 +13,7 @@ class WithdrawsModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_id', 'wallet_id', 'no_transaction', 'amount', 'account', 'is_active'];
+    protected $allowedFields    = ['user_id', 'wallet_id', 'wallet_user','no_transaction', 'amount', 'account', 'is_active'];
 
     // Dates
     protected $useTimestamps = true;

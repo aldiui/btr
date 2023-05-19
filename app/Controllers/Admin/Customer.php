@@ -29,8 +29,8 @@ class Customer extends BaseController
     public function update($id)
     {
         $validate = $this->validate([
-            'username' => ['rules' => 'required|min_length[6]'],
-            'email' => ['rules' => 'required|valid_email'],
+            'username' => ['rules' => 'required|min_length[6]|trim'],
+            'email' => ['rules' => 'required|valid_email|trim'],
         ]);
 
         if (!$validate) {
@@ -68,6 +68,7 @@ class Customer extends BaseController
             'username' =>  $this->request->getPost('username'),
             'email' =>  $this->request->getPost('email'),
             'main_wallet' =>  $this->request->getPost('main_wallet'),
+            'dividen_wallet' =>  $this->request->getPost('dividen_wallet'),
             'place_of_birth' =>  $this->request->getPost('place_of_birth'),
             'date_of_birth' =>  $this->request->getPost('date_of_birth'),
             'gender' =>  $this->request->getPost('gender'),

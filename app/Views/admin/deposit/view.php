@@ -33,7 +33,7 @@
                                         <td><?= $row['no_transaction'] ?></td>
                                         <td><?= $row['username'] ?></td>
                                         <td><?= $row['method'] ?></td>
-                                        <td>$ <?= $row['amount'] ?> USD</td>
+                                        <td><?= $row['amount'] ?> BUSD</td>
                                         <td>
                                             <?= dated($row['created_at']);?>
                                         </td>
@@ -46,7 +46,7 @@
                                         </td>
                                         <td width="15%">
                                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                                <a href="<?= base_url();?>admin/deposit/detail/<?= $row['id'];?>"
+                                                <a href="<?= base_url();?>admin/deposit/edit/<?= $row['id'];?>"
                                                     class="btn btn-info"><i class="flaticon-381-focus"></i></a>
                                             </div>
                                         </td>

@@ -116,7 +116,12 @@
                         <div class="card-info my-0">
                             <p class="mb-1 text-white text-center fs-14">Main Wallet</p>
                             <div class="text-center">
-                                <h2 class="num-text text-white font-w600">$ <?= $account['main_wallet'];?>
+                                <h2 class="num-text text-white font-w600"><?= $account['main_wallet'];?> VBTR
+                                </h2>
+                            </div>
+                            <p class="mb-1 text-white text-center fs-14 mt-3">Dividen Wallet</p>
+                            <div class="text-center">
+                                <h2 class="num-text text-white font-w600"><?= $account['dividen_wallet'];?> BUSD
                                 </h2>
                             </div>
                         </div>

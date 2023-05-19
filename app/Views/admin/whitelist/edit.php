@@ -12,6 +12,22 @@
                         <a href="<?= base_url();?>admin/whitelist" class="btn btn-secondary ms-auto">Back</a>
                     </div>
                     <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-lg-5 mb-4">
+                                <label for="amount"><strong>Customer</strong></label>
+                            </div>
+                            <div class="col-lg-7 mb-4">
+                                : <?= $user['username'];?>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-lg-5 mb-4">
+                                <label for="amount"><strong>Email</strong></label>
+                            </div>
+                            <div class="col-lg-7 mb-4">
+                                : <?= $user['email'];?>
+                            </div>
+                        </div>
                         <div class="table-responsive">
                             <table id="example" class="display" style="width:100%">
                                 <thead>

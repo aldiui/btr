@@ -17,9 +17,9 @@ class Profile extends BaseController
     public function update()
     {
         $validate = $this->validate([
-            'name' => ['rules' => 'required'],
-            'username' => ['rules' => 'required|min_length[6]'],
-            'email' => ['rules' => 'required|valid_email'],
+            'name' => ['rules' => 'required|trim'],
+            'username' => ['rules' => 'required|trim|min_length[6]'],
+            'email' => ['rules' => 'required|trim|valid_email'],
         ]);
 
         if (!$validate) {
@@ -66,9 +66,9 @@ class Profile extends BaseController
     public function changepassword()
     {
         $validate = $this->validate([
-            'old' => ['rules' => 'required'],
-            'password' => ['rules' => 'required|min_length[8]'],
-            'confirm' => ['rules' => 'required|min_length[8]|matches[password]'],
+            'old' => ['rules' => 'required|trim'],
+            'password' => ['rules' => 'required|trim|min_length[8]'],
+            'confirm' => ['rules' => 'required|trim|min_length[8]|matches[password]'],
         ]);
 
         if (!$validate) {

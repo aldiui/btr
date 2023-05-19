@@ -81,11 +81,12 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('withdraw/edit/(:num)', 'Admin\Withdraw::edit/$1');
     $routes->post('withdraw/edit/(:num)', 'Admin\Withdraw::update/$1');
     $routes->get('withdraw/delete/(:num)', 'Admin\Withdraw::delete/$1');
-    
+
     $routes->get('deposit', 'Admin\Deposit::index');
-    $routes->get('deposit/detail/(:num)', 'Admin\Deposit::detail/$1');
+    $routes->get('deposit/edit/(:num)', 'Admin\Deposit::edit/$1');
+    $routes->post('deposit/edit/(:num)', 'Admin\Deposit::update/$1');
     $routes->get('deposit/delete/(:num)', 'Admin\Depsosit::delete/$1');
-    
+
     $routes->get('transaction', 'Admin\Transaction::index');
     $routes->get('transaction/edit/(:num)', 'Admin\Transaction::edit/$1');
     $routes->post('transaction/edit/(:num)', 'Admin\Transaction::update/$1');
@@ -93,6 +94,7 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('transaction/delete/(:num)', 'Admin\Transaction::delete/$1');
 
     $routes->get('whitelist', 'Admin\Whitelist::index');
+    $routes->post('whitelist', 'Admin\Whitelist::import');
     $routes->get('whitelist/edit/(:num)', 'Admin\Whitelist::edit/$1');
     $routes->post('whitelist/edit/(:num)', 'Admin\Whitelist::update/$1');
 });
@@ -103,23 +105,20 @@ $routes->group('/', ['filter' => 'role:user'], function ($routes) {
     $routes->get('profile', 'User\Profile::index');
     $routes->post('profile', 'User\Profile::update');
     $routes->post('profile/changepassword', 'User\Profile::changepassword');
-    
+
     $routes->get('wallet', 'User\Wallet::index');
     $routes->get('wallet/create', 'User\Wallet::create');
     $routes->post('wallet/create', 'User\Wallet::save');
     $routes->get('wallet/edit/(:num)', 'User\Wallet::edit/$1');
     $routes->post('wallet/edit/(:num)', 'User\Wallet::update/$1');
     $routes->get('wallet/delete/(:num)', 'User\Wallet::delete/$1');
-    
+
     $routes->get('plan', 'User\Plan::index');
-    
+
     $routes->get('transaction', 'User\Transaction::index');
     $routes->get('transaction/(:num)', 'User\Transaction::create/$1');
     $routes->get('transaction/detail/(:num)', 'User\Transaction::detail/$1');
     $routes->post('transaction/(:num)', 'User\Transaction::save/$1');
-    
-    $routes->get('deposit', 'User\Deposit::index');
-    $routes->get('deposit/detail/(:num)', 'User\Deposit::detail/$1');
 
     $routes->get('withdraw', 'User\Withdraw::index');
     $routes->get('withdraw/create', 'User\Withdraw::create');
@@ -127,6 +126,11 @@ $routes->group('/', ['filter' => 'role:user'], function ($routes) {
     $routes->get('withdraw/edit/(:num)', 'User\Withdraw::edit/$1');
     $routes->post('withdraw/edit/(:num)', 'User\Withdraw::update/$1');
     $routes->get('withdraw/delete/(:num)', 'User\Withdraw::delete/$1');
+
+    $routes->get('deposit', 'User\Deposit::index');
+    $routes->get('deposit/create', 'User\Deposit::create');
+    $routes->post('deposit/create', 'User\Deposit::save');
+    $routes->get('deposit/detail/(:num)', 'User\Deposit::detail/$1');
 });
 
 /*

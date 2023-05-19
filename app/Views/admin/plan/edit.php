@@ -96,18 +96,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label class="mb-1" for="estimation"><strong>Estimation</strong></label>
-                                        <input type="text"
-                                            class="form-control <?= !empty($error['estimation']) ? 'is-invalid' : ''; ?>"
-                                            name="estimation" id="estimation" value="<?= $plan['estimation'];?>">
-                                        <small class="invalid-feedback">
-                                            <?= !empty($error['estimation']) ? validation_show_error('estimation') : ''; ?>
-                                        </small>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label class="mb-1" for="return"><strong>Return (%)</strong></label>
+                                        <label class="mb-1" for="return"><strong>Fixed (x)</strong></label>
                                         <input type="text"
                                             class="form-control <?= !empty($error['return']) ? 'is-invalid' : ''; ?>"
                                             name="return" id="return" value="<?= $plan['return'];?>">

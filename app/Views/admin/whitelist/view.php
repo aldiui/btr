@@ -8,6 +8,38 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">Manage <?= $title;?></div>
+                        <div class="ms-auto">
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                data-bs-target="#basicModal"><i class="flaticon-381-file me-2"></i>Import Excel</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="basicModal">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Import Excel <?= $title;?></h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal">
+                                            </button>
+                                        </div>
+                                        <form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label for="image" class="form-label"><strong>File</strong></label>
+                                                    <input class="dropify" name="file" id="input-file-now" type="file">
+                                                    <small class="text-danger">
+                                                        <?= !empty($error['file']) ? validation_show_error('file') : ''; ?>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Save</button>
+                                                <button type="button" class="btn btn-danger light"
+                                                    data-bs-dismiss="modal">Close</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -16,7 +48,7 @@
                                     <tr>
                                         <th width="7%">#</th>
                                         <th>User</th>
-                                        <th>Account Wallet</th>
+                                        <th>Wallet Address</th>
                                         <th>Status Plan</th>
                                         <th>Action</th>
                                     </tr>
@@ -28,7 +60,7 @@
                                     <tr>
                                         <td><?= $no++ ?></td>
                                         <td><?= $row['username'] ?></td>
-                                        <td><?= $row['total_wallets'] ?> Wallets</td>
+                                        <td><?= $row['wallet_account'] ?></td>
                                         <td>
                                             <span
                                                 class="badge  light <?= ($row['is_plan'] == 1) ? "badge-success" : "badge-danger";?>">

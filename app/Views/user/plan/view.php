@@ -19,21 +19,15 @@
                             <small class="d-block mb-3">Period : <?= $row['period_month'];?> Month
                                 (<?= $row['period_day'];?> Days)</small>
                             <div class="d-flex justify-content-between mb-2">
-                                <div>Estimation Return</div>
-                                <div>
-                                    <?= $row['estimation'];?>
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2">
                                 <div>Minimal Amount</div>
                                 <div>
-                                    $ <?= $row['min_amount'];?>
+                                    <?= $row['min_amount'];?> BUSD
                                 </div>
                             </div>
                             <div class="d-flex justify-content-between mb-2">
                                 <div>Maximal Amount </div>
                                 <div>
-                                    $ <?= $row['max_amount'];?>
+                                    <?= $row['max_amount'];?> BUSD
                                 </div>
                             </div>
                             <div>

@@ -65,6 +65,7 @@ abstract class BaseController extends Controller
         $this->TransactionsModel = new \App\Models\TransactionsModel();
         $this->DepositsModel = new \App\Models\DepositsModel();
         $this->WithdrawsModel = new \App\Models\WithdrawsModel();
+        $this->WhitelistsModel = new \App\Models\WhitelistsModel();
         $this->Email = \Config\Services::email();
     }
 }

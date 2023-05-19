@@ -17,9 +17,9 @@ class Setting extends BaseController
     public function update()
     {
         $validate = $this->validate([
-            'name' => ['rules' => 'required'],
-            'description' => ['rules' => 'required'],
-            'short' => ['rules' => 'required'],
+            'name' => ['rules' => 'required|trim'],
+            'description' => ['rules' => 'required|trim'],
+            'short' => ['rules' => 'required|trim'],
         ]);
 
         if (!$validate) {

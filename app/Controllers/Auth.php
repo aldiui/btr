@@ -30,8 +30,8 @@ class Auth extends BaseController
     public function login()
     {
         $validate = $this->validate([
-            'email' => 'required',
-            'password' => 'required|min_length[8]',
+            'email' => 'required|trim',
+            'password' => 'required|trim|min_length[8]',
         ]);
 
         if (!$validate) {
@@ -74,11 +74,11 @@ class Auth extends BaseController
     public function signup()
     {
         $validate = $this->validate([
-            'username' => 'required|min_length[6]|is_unique[users.username]',
-            'email' => 'required|valid_email|is_unique[users.email]',
-            'password' => 'required|min_length[8]',
-            'country' => 'required',
-            'confirm' => 'required|min_length[8]|matches[password]',
+            'username' => 'required|trim|min_length[6]|is_unique[users.username]',
+            'email' => 'required|trim|valid_email|is_unique[users.email]',
+            'password' => 'required|trim|min_length[8]',
+            'country' => 'required|trim',
+            'confirm' => 'required|trim|min_length[8]|matches[password]',
         ]);
 
         if (!$validate) {
@@ -140,7 +140,7 @@ class Auth extends BaseController
     public function resetpassword()
     {
         $validate = $this->validate([
-            'email' => 'required|valid_email',
+            'email' => 'required|trim|valid_email',
         ]);
 
         if (!$validate) {
@@ -249,8 +249,8 @@ class Auth extends BaseController
     public function verify()
     {
         $validate = $this->validate([
-            'password' => 'required|min_length[8]',
-            'confirm' => 'required|min_length[8]|matches[password]',
+            'password' => 'required|trim|min_length[8]',
+            'confirm' => 'required|trim|min_length[8]|matches[password]',
         ]);
         if (!$validate) {
             return redirect()->to(base_url('/changepassword'))->withInput();

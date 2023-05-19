@@ -87,7 +87,7 @@
                                         <td><?= $row['no_transaction'] ?></td>
                                         <td><?= $row['username'] ?></td>
                                         <td><?= $row['plan'] ?></td>
-                                        <td>$ <?= $row['amount'] ?> USD</td>
+                                        <td><?= $row['amount'] ?> BUSD</td>
                                         <td><?= dated($row['created_at']) ?></td>
                                         <td>
                                             <span

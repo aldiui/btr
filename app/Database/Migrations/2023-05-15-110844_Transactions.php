@@ -22,10 +22,6 @@ class Transactions extends Migration
                 'type' => 'INT',
                 'unsigned' => true,
             ],
-            'method_id' => [
-                'type' => 'INT',
-                'unsigned' => true,
-            ],
             'no_transaction' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',
@@ -35,8 +31,8 @@ class Transactions extends Migration
                 'constraint' => '10,2',
             ],
             'persentace' => [
-                'type' => 'FLOAT',
-                'constraint' => '10,2',
+                'type' => 'INT',
+                'unsigned' => true,
             ],
             'profit' => [
                 'type' => 'FLOAT',

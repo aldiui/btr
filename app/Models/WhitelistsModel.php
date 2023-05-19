@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PlansModel extends Model
+class WhitelistsModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'plans';
+    protected $table            = 'whitelists';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name','period_day','period_month', 'min_amount','max_amount','return','image','is_active','description'];
+    protected $allowedFields    = ['wallet_address'];
 
     // Dates
     protected $useTimestamps = true;
@@ -23,7 +23,9 @@ class PlansModel extends Model
     protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [];
+    protected $validationRules = [
+        'wallet_address' => 'trim|required'
+    ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
@@ -38,9 +40,4 @@ class PlansModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function getPlan()
-    {
-        return $this->where('is_active', 1)->findAll();
-    }
 }

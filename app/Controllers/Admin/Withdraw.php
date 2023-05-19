@@ -31,10 +31,18 @@ class Withdraw extends BaseController
         $is_active = $this->request->getPost('is_active');
         if($is_active == 1) {
             $user = $this->UsersModel->find($withdraw['user_id']);
-            $main_wallet = $user['main_wallet'] - $withdraw['amount'];
-            $this->UsersModel->update($withdraw['user_id'], [
-                'main_wallet' => $main_wallet,
-            ]);
+            if($withdraw['wallet_user'] == "Main Wallet"){      
+                $main_wallet = $user['main_wallet'] - $withdraw['amount'];
+                $this->UsersModel->update($withdraw['user_id'], [
+                    'main_wallet' => $main_wallet,
+                ]);
+            } elseif ($withdraw['wallet_user'] == "Dividen Wallet") {
+                $dividen_wallet = $user['dividen_wallet'] - $withdraw['amount'];
+                $this->UsersModel->update($withdraw['user_id'], [
+                    'dividen_wallet' => $dividen_wallet,
+                ]);
+            } 
+            
             $setemail = $this->EmailsModel->find(1);
             $this->Email->setFrom($setemail['from_email'], $setemail['from_name']);
             $this->Email->setTo($user['email']);

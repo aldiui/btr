@@ -74,6 +74,18 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
+                                        <label class="mb-1" for="dividen_wallet"><strong>Dividen Wallet</strong></label>
+                                        <input type="number"
+                                            class="form-control <?= !empty($error['dividen_wallet']) ? 'is-invalid' : ''; ?>"
+                                            name="dividen_wallet" id="dividen_wallet"
+                                            value="<?= $customer['dividen_wallet'];?>">
+                                        <small class="invalid-feedback">
+                                            <?= !empty($error['dividen_wallet']) ? validation_show_error('dividen_wallet') : ''; ?>
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
                                         <label class="mb-1" for="place_of_birth"><strong>Place of Birth</strong></label>
                                         <input type="text"
                                             class="form-control <?= !empty($error['place_of_birth']) ? 'is-invalid' : ''; ?>"

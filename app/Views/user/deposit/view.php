@@ -8,6 +8,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">Manage <?= $title;?></div>
+                        <a href="<?= base_url();?>deposit/create" class="btn btn-primary ms-auto">+ Add</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -31,7 +32,7 @@
                                         <td><?= $no++ ?></td>
                                         <td><?= $row['no_transaction'] ?></td>
                                         <td><?= $row['method'] ?></td>
-                                        <td>$ <?= $row['amount'] ?> USD</td>
+                                        <td><?= $row['amount'] ?> BUSD</td>
                                         <td>
                                             <?= dated($row['created_at']);?>
                                         </td>

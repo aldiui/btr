@@ -33,7 +33,7 @@
                                     <label for="amount"><strong>Amount</strong></label>
                                 </div>
                                 <div class="col-lg-7 mb-4">
-                                    : $ <?= $deposit['amount'];?> USD
+                                    : <?= $deposit['amount'];?> BUSD
                                 </div>
                             </div>
                             <div class="row align-items-center">

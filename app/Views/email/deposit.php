@@ -504,8 +504,8 @@
                                                                 <td width="80%" class="purchase_item"><span
                                                                         class="f-fallback">Deposit</span></td>
                                                                 <td class="align-right" width="20%"
-                                                                    class="purchase_item"><span class="f-fallback"> $
-                                                                        <?= $deposit['amount'];?> USD</span></td>
+                                                                    class="purchase_item"><span class="f-fallback">
+                                                                        <?= $deposit['amount'];?> BUSD</span></td>
                                                             </tr>
                                                             <tr>
                                                                 <td width="80%" class="purchase_footer" valign="middle">
@@ -515,7 +515,7 @@
                                                                 </td>
                                                                 <td width="20%" class="purchase_footer" valign="middle">
                                                                     <p class="f-fallback purchase_total">
-                                                                        $ <?= $deposit['amount'];?> USD</p>
+                                                                        <?= $deposit['amount'];?> BUSD</p>
                                                                 </td>
                                                             </tr>
                                                         </table>

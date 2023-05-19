@@ -26,9 +26,9 @@ class Method extends BaseController
     public function save()
     {
         $validate = $this->validate([
-            'name' => 'required|min_length[3]',
-            'network' => 'required|min_length[3]',
-            'wallet_address' => 'required',
+            'name' => 'required|trim|min_length[3]',
+            'network' => 'required|trim|min_length[3]',
+            'wallet_address' => 'required|trim',
             'image' => 'uploaded[image]|max_size[image,1024]|is_image[image]|mime_in[image,image/jpeg,image/png,image/jpg]',
             'wallet_image' => 'uploaded[wallet_image]|max_size[wallet_image,1024]|is_image[wallet_image]|mime_in[image,image/jpeg,image/png,image/jpg]'
         ]);
@@ -68,9 +68,9 @@ class Method extends BaseController
     public function update($id)
     {
         $validate = $this->validate([
-            'name' => 'required|min_length[3]',
-            'network' => 'required|min_length[3]',
-            'wallet_address' => 'required',
+            'name' => 'required|trim|min_length[3]',
+            'network' => 'required|trim|min_length[3]',
+            'wallet_address' => 'required|trim',
         ]);
 
         if (!$validate) {

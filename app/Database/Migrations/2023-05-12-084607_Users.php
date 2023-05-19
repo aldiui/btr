@@ -71,6 +71,11 @@ class Users extends Migration
                 'constraint' => '10,2',
                 'default' => 0,
             ],
+            'dividen_wallet' => [
+                'type' => 'FLOAT',
+                'constraint' => '10,2',
+                'default' => 0,
+            ],
             'is_active' => [
                 'type' => 'BOOLEAN',
             ],
@@ -90,8 +95,8 @@ class Users extends Migration
         $this->forge->createTable('users');
 
         $data = [
-            ['id' => '1','name' => 'admin','username' => 'admin1','email' => 'aldijaya280902@gmail.com','password' => '2e92ae3c720b53037769fd493cd6f04beeaaece756a676e2470c43aae0968c10','salt' => 'HUKDOwkh6HEODqkymaUCFg==','gender' => NULL,'date_of_birth' => NULL,'place_of_birth' => NULL,'role' => 'admin','image' => 'default.jpg','country_id' => '104','address' => NULL,'main_wallet' => '0.00','is_active' => '1','is_plan' => '1','created_at' => '2023-05-13 18:35:27','updated_at' => '2023-05-13 18:35:27'],
-            ['id' => '2','name' => 'user','username' => 'userman1','email' => 'aldikakabow28@gmail.com','password' => '7de50fae77d8b308fe333e1f6024bac11ea591ed237c06a3b04210ff354867e5','salt' => 'R5R3s2/yp1iU/ox0JVdyxA==','gender' => NULL,'date_of_birth' => NULL,'place_of_birth' => NULL,'role' => 'user','image' => 'default.jpg','country_id' => '104','address' => NULL,'main_wallet' => '0.00','is_active' => '1', 'is_plan' => '0','created_at' => '2023-05-15 17:58:05','updated_at' => '2023-05-15 17:59:46']
+            ['id' => '1','name' => 'admin','username' => 'admin1','email' => 'aldijaya280902@gmail.com','password' => '2e92ae3c720b53037769fd493cd6f04beeaaece756a676e2470c43aae0968c10','salt' => 'HUKDOwkh6HEODqkymaUCFg==','gender' => null,'date_of_birth' => null,'place_of_birth' => null,'role' => 'admin','image' => 'default.jpg','country_id' => '104','address' => null,'main_wallet' => '0.00','is_active' => '1','is_plan' => '1','created_at' => '2023-05-13 18:35:27','updated_at' => '2023-05-13 18:35:27'],
+            ['id' => '2','name' => 'user','username' => 'userman1','email' => 'aldikakabow28@gmail.com','password' => '7de50fae77d8b308fe333e1f6024bac11ea591ed237c06a3b04210ff354867e5','salt' => 'R5R3s2/yp1iU/ox0JVdyxA==','gender' => null,'date_of_birth' => null,'place_of_birth' => null,'role' => 'user','image' => 'default.jpg','country_id' => '104','address' => null,'main_wallet' => '0.00','is_active' => '1', 'is_plan' => '0','created_at' => '2023-05-15 17:58:05','updated_at' => '2023-05-15 17:59:46']
         ];
         $this->db->table('users')->insertBatch($data);
     }
