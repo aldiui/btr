@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">Manage <?= $title;?></div>
-                        <?php if($account['main_wallet'] > 0):?>
+                        <?php if($account['main_wallet'] > 0 OR $account['dividen_wallet'] > 0):?>
                         <a href="<?= base_url();?>withdraw/create" class="btn btn-primary ms-auto">+ Add</a>
                         <?php endif;?>
                     </div>

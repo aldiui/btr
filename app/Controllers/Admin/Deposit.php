@@ -57,4 +57,18 @@ class Deposit extends BaseController
         session()->setFlashdata('success', 'The Deposit has been successfully updated.');
         return redirect()->to(base_url('/admin/deposit'));
     }
+
+    public function delete($id)
+    {
+        $deposit = $this->DepositsModel->find($id);
+        $image = $deposit['image'];
+        if ($image && file_exists('assets/transaction/user/'.$image)) {
+            if ($image != "default.jpg") {
+                unlink('assets/transaction/user/'.$image);
+            }
+        }
+        $this->DepositsModel->delete($id);
+        session()->setFlashdata('success', 'The Deposit has been deleted successfully.');
+        return redirect()->to(base_url('/admin/deposit'));
+    }
 }

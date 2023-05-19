@@ -85,7 +85,7 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('deposit', 'Admin\Deposit::index');
     $routes->get('deposit/edit/(:num)', 'Admin\Deposit::edit/$1');
     $routes->post('deposit/edit/(:num)', 'Admin\Deposit::update/$1');
-    $routes->get('deposit/delete/(:num)', 'Admin\Depsosit::delete/$1');
+    $routes->get('deposit/delete/(:num)', 'Admin\Deposit::delete/$1');
 
     $routes->get('transaction', 'Admin\Transaction::index');
     $routes->get('transaction/edit/(:num)', 'Admin\Transaction::edit/$1');

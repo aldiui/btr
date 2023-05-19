@@ -93,7 +93,6 @@ class Customer extends BaseController
             }
         }
         $this->UsersModel->delete($id);
-        $this->MethodsModel->where('user_id', $id)->delete();
         session()->setFlashdata('success', 'The customer has been deleted successfully.');
         return redirect()->to(base_url('/admin/customer'));
     }

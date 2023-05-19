@@ -29,9 +29,14 @@ class Transaction extends BaseController
         $transaction = $this->TransactionsModel->find($id);
         $deposit = $this->DepositsModel->where('no_transaction', $transaction['no_transaction'])->first();
         $is_active = $this->request->getPost('is_active');
+        $user = $this->UsersModel->find($transaction['user_id']);
         if($is_active == 1) {
             $date = date('Y-m-d H:i:s');
             $setemail = $this->EmailsModel->find(1);
+            $main_wallet = $user['main_wallet'] - $transaction['amount'];
+            $this->UsersModel->update($user['id'], [
+                'main_wallet' => $main_wallet
+            ]);
             $user = $this->UsersModel->find($transaction['user_id']);
             $this->Email->setFrom($setemail['from_email'], $setemail['from_name']);
             $this->Email->setTo($user['email']);
@@ -95,9 +100,7 @@ class Transaction extends BaseController
 
     public function delete($id)
     {
-        $transaction = $this->TransactionsModel->find($id);
-        $this->TransactionsModel->where('no_transaction', $transaction['no_transaction'])->delete();
-        $this->DepositsModel->where('no_transaction', $transaction['no_transaction'])->delete();
+        $this->TransactionsModel->delete($id);
         session()->setFlashdata('success', 'The transaction has been successfully completed.');
         return redirect()->to(base_url('/admin/transaction'));
     }

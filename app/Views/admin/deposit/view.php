@@ -47,7 +47,10 @@
                                         <td width="15%">
                                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                                 <a href="<?= base_url();?>admin/deposit/edit/<?= $row['id'];?>"
-                                                    class="btn btn-info"><i class="flaticon-381-focus"></i></a>
+                                                    class="btn btn-warning"><i class="flaticon-381-edit"></i></a>
+                                                <a href="<?= base_url();?>admin/deposit/delete/<?= $row['id'];?>"
+                                                    class="btn btn-danger deleted"><i
+                                                        class="flaticon-133-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>
