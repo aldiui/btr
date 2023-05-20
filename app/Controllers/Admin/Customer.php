@@ -21,6 +21,7 @@ class Customer extends BaseController
         $data['account'] = $this->UsersModel->find(session()->get('id'));
         $data['setting'] = $this->SettingsModel->find(1);
         $data['customer'] = $this->UsersModel->find($id);
+        $data['wallet'] = $this->WalletsModel->getWallet($id);
         $data['countries'] = $this->CountriesModel->findAll();
         $data['gender'] = ["male","female","other"];
         return view('admin/customer/edit', $data);
@@ -75,13 +76,13 @@ class Customer extends BaseController
             'country_id' =>  $this->request->getPost('country'),
             'address' =>  $this->request->getPost('address'),
             'is_active' =>  $this->request->getPost('is_active'),
+            'is_plan' =>  $this->request->getPost('is_plan'),
             'image' => $image
         ]);
 
         session()->setFlashdata('success', 'The customer has been updated successfully.');
         return redirect()->to(base_url('/admin/customer'));
     }
-
 
     public function delete($id)
     {

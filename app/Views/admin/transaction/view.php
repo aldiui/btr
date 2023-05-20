@@ -17,7 +17,7 @@
                                         <th width="7%">#</th>
                                         <th>TRX</th>
                                         <th>User</th>
-                                        <th>Privatesale Contribute</th>
+                                        <th>Staking Plan</th>
                                         <th>Amount</th>
                                         <th>Time Staking</th>
                                         <th>Status</th>

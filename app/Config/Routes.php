@@ -92,11 +92,6 @@ $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->post('transaction/edit/(:num)', 'Admin\Transaction::update/$1');
     $routes->post('transaction/profit/(:num)', 'Admin\Transaction::profit/$1');
     $routes->get('transaction/delete/(:num)', 'Admin\Transaction::delete/$1');
-
-    $routes->get('whitelist', 'Admin\Whitelist::index');
-    $routes->post('whitelist', 'Admin\Whitelist::import');
-    $routes->get('whitelist/edit/(:num)', 'Admin\Whitelist::edit/$1');
-    $routes->post('whitelist/edit/(:num)', 'Admin\Whitelist::update/$1');
 });
 
 $routes->group('/', ['filter' => 'role:user'], function ($routes) {

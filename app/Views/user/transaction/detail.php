@@ -30,7 +30,7 @@
                             </div>
                             <div class="row align-items-center">
                                 <div class="col-lg-5 mb-4">
-                                    <label for="amount"><strong>Privatesale Contribute</strong></label>
+                                    <label for="amount"><strong>Staking Plan</strong></label>
                                 </div>
                                 <div class="col-lg-7 mb-4">
                                     : <?= $transaction['plan'] ;?>

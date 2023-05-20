@@ -19,6 +19,7 @@
                                         <th>Username</th>
                                         <th>Date Created</th>
                                         <th>Status</th>
+                                        <th>Plan</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -34,8 +35,14 @@
                                         <td><?= dated($row['created_at']) ?></td>
                                         <td>
                                             <span
-                                                class="badge  light <?= ($row['is_active'] == 1) ? "badge-success" : "badge-danger";?>">
+                                                class="badge light <?= ($row['is_active'] == 1) ? "badge-success" : "badge-danger";?>">
                                                 <?= ($row['is_active'] == 1) ? "Active" : "Inactive";?>
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span
+                                                class="badge light <?= ($row['is_plan'] == 1) ? "badge-success" : "badge-danger";?>">
+                                                <?= ($row['is_plan'] == 1) ? "Active" : "Inactive";?>
                                             </span>
                                         </td>
                                         <td width="15%">

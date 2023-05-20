@@ -114,15 +114,15 @@
                     <div class="card-bx stacked card mx-2 my-0">
                         <img src="<?= base_url()?>assets/images/card/card3.jpg" alt="">
                         <div class="card-info my-0">
-                            <p class="mb-1 text-white text-center fs-14">Main Wallet</p>
+                            <p class="mb-1 text-white text-center">Main Wallet</p>
                             <div class="text-center">
-                                <h2 class="num-text text-white font-w600"><?= $account['main_wallet'];?> VBTR
-                                </h2>
+                                <h4 class=" text-white"><?= $account['main_wallet'];?> VBTR
+                                </h4>
                             </div>
-                            <p class="mb-1 text-white text-center fs-14 mt-3">Dividen Wallet</p>
+                            <p class="mb-1 text-white text-center mt-3">Dividen Wallet</p>
                             <div class="text-center">
-                                <h2 class="num-text text-white font-w600"><?= $account['dividen_wallet'];?> BUSD
-                                </h2>
+                                <h4 class=" text-white"><?= $account['dividen_wallet'];?> BUSD
+                                </h4>
                             </div>
                         </div>
                     </div>
@@ -150,7 +150,7 @@
                     <li>
                         <a class="ai-icon" href="<?= base_url();?>plan" aria-expanded="false">
                             <i class="flaticon-001-monitor"></i>
-                            <span class="nav-text">Privatesale Contribute</span>
+                            <span class="nav-text">Staking Plan</span>
                         </a>
                     </li>
                     <li>

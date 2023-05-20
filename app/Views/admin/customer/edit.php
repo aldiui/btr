@@ -182,6 +182,52 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="mb-1 d-block" for="is_plan"><strong>Plan</strong></label>
+                                        <div class="btn-group w-100" role="group"
+                                            aria-label="Basic radio toggle button group">
+                                            <input type="radio"
+                                                class="btn-check <?= ($customer['is_plan'] == 1) ? "active" : "";?>"
+                                                name="is_plan" id="is_plan1" autocomplete="off" value="1"
+                                                <?= ($customer['is_plan'] == 1) ? "checked" : "";?>>
+                                            <label class="btn btn-outline-success" for="is_plan1">Active</label>
+                                            <input type="radio"
+                                                class="btn-check <?= ($customer['is_plan'] == 0) ? "active" : "";?>"
+                                                name="is_plan" id="is_plan2" autocomplete="off" value="0"
+                                                <?= ($customer['is_plan'] == 0) ? "checked" : "";?>>
+                                            <label class="btn btn-outline-danger" for="is_plan2">Inactive</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <table id="example" class="display" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th width="7%">#</th>
+                                                    <th>Name</th>
+                                                    <th>Method</th>
+                                                    <th>Network</th>
+                                                    <th>Wallet Address</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                    $no = 1;
+                                    foreach ($wallet as $row) :?>
+                                                <tr>
+                                                    <td><?= $no++ ?></td>
+                                                    <td><?= $row['name'] ?></td>
+                                                    <td><?= $row['method_name'] ?></td>
+                                                    <td><?= $row['network'] ?></td>
+                                                    <td><?= $row['wallet_address'] ?></td>
+                                                </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>

@@ -8,7 +8,7 @@ class Plan extends BaseController
 {
     public function index()
     {
-        $data['title'] = "Privatesale Contribute";
+        $data['title'] = "Staking Plan";
         $data['account'] = $this->UsersModel->find(session()->get('id'));
         $data['setting'] = $this->SettingsModel->find(1);
         $data['plan'] = $this->PlansModel->getPlan();

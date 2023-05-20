@@ -16,7 +16,7 @@
                                     <tr>
                                         <th width="7%">#</th>
                                         <th>TRX</th>
-                                        <th>Privatesale Contribute</th>
+                                        <th>Staking Plan</th>
                                         <th>Amount</th>
                                         <th>Time Staking</th>
                                         <th>Status</th>
@@ -26,7 +26,7 @@
                                 <tbody>
                                     <?php
                                     $no = 1;
-                                    foreach ($transaction as $row) :?>
+foreach ($transaction as $row) :?>
                                     <tr>
                                         <td><?= $no++ ?></td>
                                         <td><?= $row['no_transaction'] ?></td>

@@ -131,12 +131,6 @@
                         </a>
                     </li>
                     <li>
-                        <a class="ai-icon" href="<?= base_url();?>admin/whitelist" aria-expanded="false">
-                            <i class="flaticon-381-list"></i>
-                            <span class="nav-text">Whitelist</span>
-                        </a>
-                    </li>
-                    <li>
                         <a class="ai-icon" href="<?= base_url();?>admin/method" aria-expanded="false">
                             <i class="flaticon-008-credit-card"></i>
                             <span class="nav-text">Method Payments</span>
@@ -145,7 +139,7 @@
                     <li>
                         <a class="ai-icon" href="<?= base_url();?>admin/plan" aria-expanded="false">
                             <i class="flaticon-001-monitor"></i>
-                            <span class="nav-text">Privatesale Contribute</span>
+                            <span class="nav-text">Staking Plan</span>
                         </a>
                     </li>
                     <li>

@@ -21,7 +21,7 @@
                                         <input type="number"
                                             class="form-control <?= !empty($error['amount']) ? 'is-invalid' : ''; ?>"
                                             name="amount" id="amount" value="<?= old('amount');?>">
-                                        <span class="input-group-text">BUSD</span>
+                                        <span class="input-group-text">BNB</span>
                                     </div>
                                     <small class="small text-danger">
                                         <?= !empty($error['amount']) ? validation_show_error('amount') : ''; ?>

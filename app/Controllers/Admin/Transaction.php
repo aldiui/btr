@@ -90,9 +90,11 @@ class Transaction extends BaseController
             'persentace' => $this->request->getPost('persentace'),
             'profit' => $this->request->getPost('profit'),
         ]);
-        $dividen_wallet = $user['dividen_wallet'] + $transaction['amount'] + $this->request->getPost('profit');
+        $main_wallet = $user['main_wallet'] + $transaction['amount'];
+        $dividen_wallet = $user['dividen_wallet'] + $this->request->getPost('profit');
         $this->UsersModel->update($user['id'], [
-            'dividen_wallet' => $dividen_wallet
+            'dividen_wallet' => $dividen_wallet,
+            'main_wallet' => $main_wallet
         ]);
         session()->setFlashdata('success', 'Profit has been successfully updated.');
         return redirect()->to(base_url('/admin/transaction'));

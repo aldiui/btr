@@ -48,12 +48,8 @@ abstract class BaseController extends Controller
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
-        // Preload any models, libraries, etc, here.
-
-        // E.g.: $this->session = \Config\Services::session();
         $this->UsersModel = new \App\Models\UsersModel();
         $this->TokensModel = new \App\Models\TokensModel();
         $this->CountriesModel = new \App\Models\CountriesModel();
@@ -65,7 +61,6 @@ abstract class BaseController extends Controller
         $this->TransactionsModel = new \App\Models\TransactionsModel();
         $this->DepositsModel = new \App\Models\DepositsModel();
         $this->WithdrawsModel = new \App\Models\WithdrawsModel();
-        $this->WhitelistsModel = new \App\Models\WhitelistsModel();
         $this->Email = \Config\Services::email();
     }
 }

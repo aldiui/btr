@@ -8,7 +8,7 @@ class Plan extends BaseController
 {
     public function index()
     {
-        $data['title'] = "Privatesale Contribute";
+        $data['title'] = "Staking Plan";
         $data['account'] = $this->UsersModel->find(session()->get('id'));
         $data['setting'] = $this->SettingsModel->find(1);
         $data['plan'] = $this->PlansModel->findAll();
@@ -17,7 +17,7 @@ class Plan extends BaseController
     
     public function create()
     {
-        $data['title'] = "Privatesale Contribute";
+        $data['title'] = "Staking Plan";
         $data['account'] = $this->UsersModel->find(session()->get('id'));
         $data['setting'] = $this->SettingsModel->find(1);
         return view('admin/plan/create', $data);
@@ -61,7 +61,7 @@ class Plan extends BaseController
 
     public function edit($id)
     {
-        $data['title'] = "Privatesale Contribute";
+        $data['title'] = "Staking Plan";
         $data['account'] = $this->UsersModel->find(session()->get('id'));
         $data['setting'] = $this->SettingsModel->find(1);
         $data['plan'] = $this->PlansModel->find($id);

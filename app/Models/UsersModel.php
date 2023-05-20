@@ -48,13 +48,4 @@ class UsersModel extends Model
     {
         return $this->where('role', 'user')->orderBy('id', 'DESC')->findAll();
     }
-
-    public function getWhiteList()
-    {
-        return $this->select('users.*, wallets.wallet_address as wallet_account')
-            ->join('wallets', 'wallets.user_id = users.id')
-            ->join('whitelists', 'whitelists.wallet_address = wallets.wallet_address')
-            ->orderBy('whitelists.id', 'DESC')
-            ->findAll();
-    }
 }
