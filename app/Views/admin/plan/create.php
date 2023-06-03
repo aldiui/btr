@@ -76,7 +76,8 @@
                                         <label class="mb-1" for="min_amount"><strong>Minimal Amount</strong></label>
                                         <input type="number"
                                             class="form-control <?= !empty($error['min_amount']) ? 'is-invalid' : ''; ?>"
-                                            name="min_amount" id="min_amount" value="<?= old('min_amount');?>">
+                                            name="min_amount" id="min_amount" value="<?= old('min_amount');?>"
+                                            step="0.1">
                                         <small class="invalid-feedback">
                                             <?= !empty($error['min_amount']) ? validation_show_error('min_amount') : ''; ?>
                                         </small>
@@ -87,7 +88,8 @@
                                         <label class="mb-1" for="max_amount"><strong>Maximal Amount</strong></label>
                                         <input type="number"
                                             class="form-control <?= !empty($error['max_amount']) ? 'is-invalid' : ''; ?>"
-                                            name="max_amount" id="max_amount" value="<?= old('max_amount');?>">
+                                            name="max_amount" id="max_amount" value="<?= old('max_amount');?>"
+                                            step="0.1">
                                         <small class="invalid-feedback">
                                             <?= !empty($error['max_amount']) ? validation_show_error('max_amount') : ''; ?>
                                         </small>

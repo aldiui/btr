@@ -93,6 +93,10 @@ class Customer extends BaseController
                 unlink('assets/images/user/'.$image);
             }
         }
+        $this->WalletsModel->where('user_id', $id)->delete();
+        $this->DepositsModel->where('user_id', $id)->delete();
+        $this->TransactionsModel->where('user_id', $id)->delete();
+        $this->WithdrawsModel->where('user_id', $id)->delete();
         $this->UsersModel->delete($id);
         session()->setFlashdata('success', 'The customer has been deleted successfully.');
         return redirect()->to(base_url('/admin/customer'));

@@ -31,12 +31,14 @@ class Plans extends Migration
                 'constraint' => 11,
             ],
             'min_amount' => [
-                'type' => 'INT',
-                'constraint' => 11,
+                'type' => 'FLOAT',
+                'constraint' => '10,2',
+                'default' => 0,
             ],
             'max_amount' => [
-                'type' => 'INT',
-                'constraint' => 11,
+                'type' => 'FLOAT',
+                'constraint' => '10,2',
+                'default' => 0,
             ],
             'return' => [
                 'type' => 'INT',

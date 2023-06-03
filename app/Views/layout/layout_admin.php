@@ -37,7 +37,6 @@
         </div>
     </div>
     <div id="main-wrapper">
-
         <div class="nav-header">
             <a href="<?= base_url();?>" class="brand-logo">
                 <img src="<?= base_url()?>assets/images/setting/<?= $setting['image'];?>" width="50" alt=""

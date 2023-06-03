@@ -54,7 +54,7 @@
                 previous: '<i class="fa fa-angle-double-left" aria-hidden="true"></i>',
             },
         },
-        lengthMenu: [25, 50, 100, 250], // Options for number of records per page, -1 represents "All"
+        lengthMenu: [50, 100, 250], // Options for number of records per page, -1 represents "All"
         pageLength: 25, // Set the initial number of records per page
     });
 

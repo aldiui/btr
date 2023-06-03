@@ -33,7 +33,8 @@
                                         <input type="number"
                                             class="form-control <?= !empty($error['amount']) ? 'is-invalid' : ''; ?>"
                                             name="amount" id="amount" value="<?= old('amount');?>"
-                                            min=<?= $plan['min_amount'] ;?>" max="<?= $plan['max_amount'] ;?>">
+                                            min=<?= $plan['min_amount'] ;?>" max="<?= $plan['max_amount'] ;?>"
+                                            step="0.1">
                                         <span class="input-group-text">BUSD</span>
                                     </div>
                                     <small class="small text-danger">
